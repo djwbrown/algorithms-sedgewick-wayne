@@ -1,3 +1,10 @@
+# macOS
+*.DS_Store
+
+# Data ~300 MB
+algs4-data.zip
+algs4-data/*
+
 # Compiled Object files
 *.slo
 *.lo
