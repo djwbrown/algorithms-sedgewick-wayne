@@ -5,7 +5,7 @@ djwbrown \_at\_ gmail
 
 ## Introduction
 
-The textbook _Algorithms, 4th Edition_ by Robert Sedgewick and Kevin Wayne covers a nice collection of fundamental data structures and algorithms (p. 954). They provide implemented examples of each in Java along with some sample data for testing. I've decided to port each of them to C++ as a learning exercise. Where possible, I've tried to incorporate best practices for C++14 and later, with Scott Meyer's _Effective Modern C++_ as my guide.
+The textbook _Algorithms, 4th Edition_ by Robert Sedgewick and Kevin Wayne covers a nice collection of fundamental data structures and algorithms (Index, p. 954). They provide implemented examples of each in Java along with some sample data for testing. I've decided to port each of them to C++ as a learning exercise. Where possible, I've tried to incorporate best practices for C++14 and later, with Scott Meyer's _Effective Modern C++_ as my guide.
 
 ## Get the data
 The sample data is available at http://algs4.cs.princeton.edu/code/algs4-data.zip  
