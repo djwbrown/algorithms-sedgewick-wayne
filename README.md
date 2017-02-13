@@ -2,11 +2,10 @@
 
 **Dylan Brown**  
 djwbrown \_at\_ gmail  
-January 2017
 
 ## Introduction
 
-The textbook _Algorithms, 4th Edition_ by Robert Sedgewick and Kevin Wayne covers a nice collection of fundamental data structures and algorithms (p. 954). They provide implemented examples of each in Java along with some sample data for testing. I've decided to port each of them to both C++ and Swift as a learning exercise. Please note that this repository is **not** about originality or performance benchmarking! **It is about correct implementations and grokking the material.**
+The textbook _Algorithms, 4th Edition_ by Robert Sedgewick and Kevin Wayne covers a nice collection of fundamental data structures and algorithms (p. 954). They provide implemented examples of each in Java along with some sample data for testing. I've decided to port each of them to C++ as a learning exercise. Where possible, I've tried to incorporate best practices for C++14 and later, with Scott Meyer's _Effective Modern C++_ as my guide.
 
 ## Get the data
 The sample data is available at http://algs4.cs.princeton.edu/code/algs4-data.zip  
@@ -23,7 +22,7 @@ Please extract the files to this directory at the root-level of the repository. 
 
 *Sorting*  
 2.1 Selection sort  
-2.2 Insertion sort  s
+2.2 Insertion sort  
 2.3 Shellsort  
 2.4 Top-down and bottom-up mergesort  
 2.5 Quicksort, and quicksort with 3-way partitioning  
