@@ -20,6 +20,7 @@ public:
     T* end() { return &array_ptr[N]; }
 
     ~ResizingArrayStack() {
+        // Style note for 'modern' C++: prefer unique_ptr to new/delete operators.
         delete [] array_ptr;
     }
 
@@ -43,6 +44,7 @@ template<typename T> void ResizingArrayStack<T>::push(T item)
 
 template<typename T> T ResizingArrayStack<T>::pop()
 {
+    // Warning: calling pop() on an empty ResizingArrayStack is UNDEFINED.
     // Remember that max index is N-1, so prefix decrement to pop from the stack.
     T item = array_ptr[--N];
     // Shrink the array if needed.
@@ -71,7 +73,7 @@ int main ()
     auto lifo_stack = ResizingArrayStack<double>{};
     cout << "Created an empty LIFO stack for double type items, with a resizing array implementation." << endl;
     
-    // Fill the stack
+    // Fill the stack.
     lifo_stack.push(1.01);
     lifo_stack.push(2.02);
     lifo_stack.push(3.14);
@@ -83,8 +85,8 @@ int main ()
     // It would be nice performance-wise to iterate in reverse without calling pop(), and without triggering a resize.
     for ( auto& i : lifo_stack ) {
         cout << "Current loop iteration has i = " << i << endl;
-        cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
     }
+    // // Alternatively, call lifo_stack.pop(), N times.
     // cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
     // cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
     // cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
