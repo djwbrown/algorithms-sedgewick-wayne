@@ -4,7 +4,6 @@
 //
 
 #include <iostream>
-#include <array>
 
 using namespace std;
 
@@ -83,6 +82,7 @@ int main ()
     // Here we're iterating forward through the array, with an unused variable `i`.
     // It would be nice performance-wise to iterate in reverse without calling pop(), and without triggering a resize.
     for ( auto& i : lifo_stack ) {
+        cout << "Current loop iteration has i = " << i << endl;
         cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
     }
     // cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;

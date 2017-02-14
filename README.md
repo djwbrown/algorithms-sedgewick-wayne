@@ -14,7 +14,7 @@ Please extract the files to this directory at the root-level of the repository. 
 ## List of algorithms
 
 *Fundamentals*  
-1.1 Pushdown stack (resizing array)  
+1.1 [Pushdown stack (resizing array)](blob/master/src/lifo-stack-resizing-array.cpp)  
 1.2 Pushdown stack (linked-list)  
 1.3 FIFO queue  
 1.4 Bag  
