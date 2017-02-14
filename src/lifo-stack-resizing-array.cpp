@@ -4,8 +4,7 @@
 //
 
 #include <iostream>
-
-using namespace std;
+#include <iterator>
 
 template<typename T> class ResizingArrayStack {
 public:
@@ -16,8 +15,34 @@ public:
     void push(T item);
     T pop();
 
-    T* begin() { return &array_ptr[0]; }
-    T* end() { return &array_ptr[N]; }
+    //----- Begin reversed iteration section -----//
+    // Please see the example here, (http://en.cppreference.com/w/cpp/iterator/iterator).
+    // Member typedefs inherit from std::iterator.
+    class stackIterator: public std::iterator<
+                        std::input_iterator_tag,   // iterator_category
+                        T,                         // value_type
+                        T,                         // difference_type
+                        const T*,                  // pointer
+                        T                          // reference
+                        >{
+        int index = 0;
+        T* it_ptr = nullptr;
+    public:
+        stackIterator(int _index = 0, T* _it_ptr = nullptr) { index = _index; it_ptr = _it_ptr; }
+        // Prefix ++, equal, unequal, and dereference operators are the minimum required for range based for-loops.
+        stackIterator& operator++() { --index; return *this; }  // Here is where we reverse the sequence.
+        bool operator==(stackIterator other) { return index == other.index; }
+        bool operator!=(stackIterator other) { return !( *this == other ); }
+        T operator*() { return it_ptr[index-1]; }
+    };
+
+    stackIterator begin() { return stackIterator(N, array_ptr); }
+    stackIterator end() {
+        N = 0;  // 'Empty' the array.
+        max_size = 1;  // Don't waste time calling resize() now. 
+        return stackIterator(0, array_ptr);
+    }
+    //----- End reversed iteration section -----//
 
     ~ResizingArrayStack() {
         // Style note for 'modern' C++: prefer unique_ptr to new/delete operators.
@@ -69,6 +94,9 @@ template<typename T> void ResizingArrayStack<T>::resize(int new_size)
 
 int main ()
 {
+    using std::cout;
+    using std::endl;
+
     // Create the stack with type `double`.
     auto lifo_stack = ResizingArrayStack<double>{};
     cout << "Created an empty LIFO stack for double type items, with a resizing array implementation." << endl;
@@ -81,9 +109,8 @@ int main ()
     cout << "Request status, the LIFO stack has size: " << lifo_stack.size() << endl;
     cout << "Request status, the LIFO stack is empty: " << (lifo_stack.is_empty() ? "true" : "false") << endl;
 
-    // Here we're iterating forward through the array, with an unused variable `i`.
-    // It would be nice performance-wise to iterate in reverse without calling pop(), and without triggering a resize.
-    for ( auto& i : lifo_stack ) {
+    // It's nice performance-wise to iterate in reverse without calling pop() or triggering a resize.
+    for ( auto i : lifo_stack) {
         cout << "Current loop iteration has i = " << i << endl;
     }
     // // Alternatively, call lifo_stack.pop(), N times.
@@ -92,6 +119,7 @@ int main ()
     // cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
     // cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
     
+    // The final status of the array should be empty in each case.
     cout << "Request status, the LIFO stack has size: " << lifo_stack.size() << endl;
     cout << "Request status, the LIFO stack is empty: " << (lifo_stack.is_empty() ? "true" : "false") << endl;
 }
