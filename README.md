@@ -1,21 +1,32 @@
-#Algorithms, Sedgewick and Wayne
+# Algorithms, Sedgewick and Wayne
 
 **Dylan Brown**  
 djwbrown \_at\_ gmail  
 
 ## Introduction
 
-The textbook _Algorithms, 4th Edition_ by Robert Sedgewick and Kevin Wayne covers a nice collection of fundamental data structures and algorithms (Index, p. 954). They provide implemented examples of each in Java along with some sample data for testing. I've decided to port each of them to C++ as a learning exercise. Where possible, I've tried to incorporate best practices for C++14 and later, with Scott Meyer's _Effective Modern C++_ as my guide.
+The textbook _Algorithms, 4th Edition_ by Robert Sedgewick and Kevin Wayne covers a nice collection of fundamental data structures and algorithms (Index, p. 954). "Our original goal for this [book](http://algs4.cs.princeton.edu/code/) was to cover the _50 algorithms that every programmer should know_." The authors provide implemented examples of each in Java along with some sample data for testing. Here I've ported each of them to C++ as a learning exercise. Where possible, I've tried to incorporate best practices for C++14 and later, with Scott Meyer's _Effective Modern C++_ as my guide.
 
 ## Get the data
 The sample data is available at http://algs4.cs.princeton.edu/code/algs4-data.zip  
 Please extract the files to this directory at the root-level of the repository. `./algs4-data/`
 
+## Build and run
+```
+mkdir build
+cd build
+cmake ..
+make
+
+# Run any algorithm.
+./depth-first-search
+```
+
 ## List of algorithms
 
 *Fundamentals*  
 1.1 [Pushdown stack (resizing array)](src/lifo-stack-resizing-array.cpp)  
-1.2 Pushdown stack (linked-list)  
+1.2 [Pushdown stack (linked-list)](src/lifo-stack-linked-list.cpp)  
 1.3 FIFO queue  
 1.4 Bag  
 1.5 Union-find  
