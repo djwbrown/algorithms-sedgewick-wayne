@@ -58,12 +58,16 @@ template<typename T> string Bag<T>::print_contents()
 	// far less prone to bugs. See `lifo-stack-resizing-array.cpp` for an iterator.
 	string str;
 	str.reserve(size() * 5);
-	while ( !is_empty() ) {
+	
+	auto item_ptr = make_shared<Node>();
+	item_ptr = first;
+
+	while (item_ptr != nullptr) {
 		str += " ";
-		str += std::to_string(first->value);
-		first = first->next;
-		N--;
+		str += std::to_string(item_ptr->value);
+		item_ptr = item_ptr->next;
 	}
+	item_ptr = nullptr;
 	return str;
 }
 
