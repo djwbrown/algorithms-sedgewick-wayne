@@ -57,7 +57,7 @@ int main ()
 
 	// Create the stack with type `double`.
 	auto lifo_stack = Stack<double>{};
-	cout << "Created an empty LIFO stack for double type items, with a resizing array implementation." << endl;
+	cout << "Created an empty LIFO stack for double type items, with a linked list implementation." << endl;
 	
 	// Fill the stack.
 	lifo_stack.push(1.01);
@@ -67,13 +67,12 @@ int main ()
 	cout << "Request status, the LIFO stack has size: " << lifo_stack.size() << endl;
 	cout << "Request status, the LIFO stack is empty: " << (lifo_stack.is_empty() ? "true" : "false") << endl;
 
-	// Call lifo_stack.pop(), N times.
-	cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
-	cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
-	cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
-	cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
-	
-	// The final status of the array should be empty in each case.
+	// Call lifo_stack.pop(), until empty.
+	while ( !lifo_stack.is_empty() ) {
+		cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
+	}
+
+	// The final status of the list should be empty in each case.
 	cout << "Request status, the LIFO stack has size: " << lifo_stack.size() << endl;
 	cout << "Request status, the LIFO stack is empty: " << (lifo_stack.is_empty() ? "true" : "false") << endl;
 }

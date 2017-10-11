@@ -7,7 +7,7 @@
 // The authors' inclusion of an iterator on the stack is a bit unconventional. Typically one would just
 // call pop after checking that the stack is not empty. However, it allowed me to gain some experience
 // with std::iterator and there _could_ be a performance gain in cases where you want to dump the contents
-// of the stack (still in LIFO order) all at once without the rezise cost or repeated underflow check.
+// of the stack (still in LIFO order) all at once without cost of a rezise or repeated underflow check.
 
 #include <iostream>
 #include <iterator>
