@@ -116,15 +116,16 @@ int main ()
 	cout << "Request status, the LIFO stack is empty: " << (lifo_stack.is_empty() ? "true" : "false") << endl;
 
 	// It's nice performance-wise to iterate in reverse without calling pop() or triggering a resize.
-	for ( auto i : lifo_stack) {
-		cout << "Current loop iteration has i = " << i << endl;
+	for ( auto item : lifo_stack) {
+		cout << "Current loop iteration has item = " << item << endl;
 	}
+
 	// // Alternatively, call lifo_stack.pop(), N times.
 	// cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
 	// cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
 	// cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
 	// cout << "Popped an item from the stack: " << lifo_stack.pop() << endl;
-	
+
 	// The final status of the array should be empty in each case.
 	cout << "Request status, the LIFO stack has size: " << lifo_stack.size() << endl;
 	cout << "Request status, the LIFO stack is empty: " << (lifo_stack.is_empty() ? "true" : "false") << endl;
