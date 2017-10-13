@@ -135,9 +135,9 @@ int main (int argc, char* argv[])
 
 	// Nice timer code adapted from (https://stackoverflow.com/a/27739925/1615035).
 	cout << num_vertices << " vertices in the disjoint-set data structure." << endl
-	     << edges.size() << " edges in disjoint-set data structurte." << endl
-	     << num_cc << " connected components." << endl
+		 << edges.size() << " edges in disjoint-set data structurte." << endl
+		 << num_cc << " connected components." << endl
 		 << "WeightedQuickUnionUF::count_connected_components, elapsed time (ns) = "
-	     << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count()
-	     << endl;
+		 << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count()
+		 << endl;
 }

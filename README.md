@@ -5,7 +5,10 @@ djwbrown \_at\_ gmail
 
 ## Introduction
 
-The textbook _Algorithms, 4th Edition_ by Robert Sedgewick and Kevin Wayne covers a nice collection of fundamental data structures and algorithms (Index, p. 954). "Our original goal for this [book](http://algs4.cs.princeton.edu/code/) was to cover the _50 algorithms that every programmer should know_." The authors provide implemented examples of each in Java along with some sample data for testing. Here I've ported each of them to C++ as a learning exercise. Where possible, I've tried to incorporate best practices for C++14 and later, with Scott Meyer's _Effective Modern C++_ as my guide.
+_Algorithms, 4th Edition_ by Robert Sedgewick and Kevin Wayne covers a nice collection of data structures and algorithms. The authors provide examples implemented in Java along with some sample data for testing.
+> Our original goal for [this book](http://algs4.cs.princeton.edu/code/) was to cover the _50 algorithms that every programmer should know_.
+
+Here I've ported each one to C++ as a learning exercise. I've tried to incorporate best practices for C++17 and later, with the [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines) and Scott Meyer's _Effective Modern C++_ as my guide.
 
 ## Get the data
 The sample data is available at http://algs4.cs.princeton.edu/code/algs4-data.zip  
@@ -29,7 +32,7 @@ make
 1.2 [Pushdown stack (linked-list)](src/lifo-stack-linked-list.cpp)  
 1.3 [FIFO queue](src/fifo-queue.cpp)  
 1.4 [Bag (Multiset)](src/bag-multiset.cpp)  
-1.5 [Union-find](src/union-find.cpp)  
+1.5 [Union-find (Disjoint-set)](src/union-find.cpp)  
 
 *Sorting*  
 2.1 Selection sort  
