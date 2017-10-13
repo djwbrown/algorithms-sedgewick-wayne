@@ -11,3 +11,4 @@ add_executable(bag-multiset src/bag-multiset.cpp)
 add_executable(union-find src/union-find.cpp)
 
 # Sorting
+add_executable(selection-sort src/selection-sort.cpp)

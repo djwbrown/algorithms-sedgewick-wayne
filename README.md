@@ -35,7 +35,7 @@ make
 1.5 [Union-find (Disjoint-set)](src/union-find.cpp)  
 
 *Sorting*  
-2.1 Selection sort  
+2.1 [Selection sort](src/selection-sort.cpp)  
 2.2 Insertion sort  
 2.3 Shellsort  
 2.4 Top-down and bottom-up mergesort  
