@@ -4,9 +4,10 @@
 //
 
 // NOTES
-// Given a list of connected vertices, where the transitive property applies (a--b ; b--c ==> a--c),
-// determine the total number of connected components in the union-find data structure.
-// The implementation here is the 'weighted quick-union' algorithm, with performance O(lg n).
+// The union-find data structure is also known as a disjoint-set. It is a dynamic connectivity graph.
+// Given a list of symmetrically connected vertices, where the transitive property applies (a<-->b ; b<-->c ==> a<-->c),
+// determine the total number of distinct connected components in the union-find data structure.
+// The implementation here is 'weighted quick-union' or the union-by-rank algorithm, with performance O(lg n).
 
 #include <iostream>
 #include <vector>
@@ -22,18 +23,18 @@ using std::get;
 
 class WeightedQuickUnionUF {
 public:
-	WeightedQuickUnionUF (int N) {
+	WeightedQuickUnionUF (int num_vertices) {
 		// Constructor creates a vector with each index representing the vertex
 		// and the value representing the root of that connected component.
-		count = N;
-		id.reserve(N);
-		sz.reserve(N);
+		count = num_vertices;
+		id.reserve(num_vertices);
+		sz.reserve(num_vertices);
 
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < num_vertices; i++) {
 			id[i] = i;  // Initialize with reflexive property, each vertex connected to itself.
 		}
 
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < num_vertices; i++) {
 			sz[i] = 1;  // Keep track of each tree's size for balance.
 		}
 	}
@@ -42,7 +43,6 @@ public:
 
 	int find(int);
 	void union_edge(int, int);
-
 	int count_connected_components(vector<pair<int,int>>);
 
 private:
@@ -80,14 +80,14 @@ void WeightedQuickUnionUF::union_edge(int p, int q)
 int WeightedQuickUnionUF::count_connected_components(vector<pair<int,int>> graph_connectivity)
 {
 	for (auto pr : graph_connectivity) {
-		auto p = get<0>(pr);
+		auto p = get<0>(pr);  // Unpack the pair.
 		auto q = get<1>(pr);
 
 		if (connected(p, q)) {
 			continue;
 		} else {
 			union_edge(p, q);
-			std::cout << "union_edge( " << p << ", " << q << " )" << std::endl;
+			// std::cout << "union_edge(" << p << ", " << q << ")" << std::endl;
 		}
 	}
 
@@ -114,19 +114,17 @@ int main (int argc, char* argv[])
 		return EXIT_FAILURE;
 	}
 
-	// Read a single integer from the first line indicating the number of pairs N.
-	int N = 0;
-	input_file >> N;
+	// Read a single integer from the first line indicating the number of vertices.
+	int num_vertices = 0;
+	input_file >> num_vertices;
 
 	// Instantiate a WeightedQuickUnionUF object.
-	auto wqu = WeightedQuickUnionUF(N);
+	auto wqu = WeightedQuickUnionUF(num_vertices);
 
 	// Read the input data into a vector of pairs representing edges in the graph.
 	vector<pair<int,int>> edges;
-	edges.reserve(N);
-	for (int i = 0; i < N; i++) {
-		int p, q;
-		input_file >> p >> q;
+	int p, q;
+	while ( input_file >> p >> q ) {
 		edges.push_back(std::make_pair(p, q));
 	}
 	input_file.close();
@@ -137,7 +135,8 @@ int main (int argc, char* argv[])
 	auto end = std::chrono::steady_clock::now();
 
 	// Nice timer code adapted from (https://stackoverflow.com/a/27739925/1615035).
-	cout << N << " vertices in graph." << endl
+	cout << num_vertices << " vertices in the disjoint-set data structure." << endl
+	     << edges.size() << " edges in disjoint-set data structurte." << endl
 	     << num_cc << " connected components." << endl
 		 << "WeightedQuickUnionUF::count_connected_components, elapsed time (ns) = "
 	     << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count()
