@@ -29,7 +29,7 @@ make
 1.2 [Pushdown stack (linked-list)](src/lifo-stack-linked-list.cpp)  
 1.3 [FIFO queue](src/fifo-queue.cpp)  
 1.4 [Bag (Multiset)](src/bag-multiset.cpp)  
-1.5 Union-find  
+1.5 [Union-find](src/union-find.cpp)  
 
 *Sorting*  
 2.1 Selection sort  
