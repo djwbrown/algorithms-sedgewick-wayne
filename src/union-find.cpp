@@ -19,7 +19,6 @@
 
 using std::vector;
 using std::pair;
-using std::get;
 
 class WeightedQuickUnionUF {
 public:
@@ -79,9 +78,9 @@ void WeightedQuickUnionUF::union_edge(int p, int q)
 
 int WeightedQuickUnionUF::count_connected_components(vector<pair<int,int>> graph_connectivity)
 {
-	for (auto pr : graph_connectivity) {
-		auto p = get<0>(pr);  // Unpack the pair.
-		auto q = get<1>(pr);
+	for (auto edge : graph_connectivity) {
+		auto p = std::get<0>(edge);  // Unpack the pair.
+		auto q = std::get<1>(edge);
 
 		if (connected(p, q)) {
 			continue;
