@@ -12,3 +12,4 @@ add_executable(union-find src/union-find.cpp)
 
 # Sorting
 add_executable(selection-sort src/selection-sort.cpp)
+add_executable(insertion-sort src/insertion-sort.cpp)

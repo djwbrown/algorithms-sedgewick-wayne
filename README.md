@@ -36,7 +36,7 @@ make
 
 *Sorting*  
 2.1 [Selection sort](src/selection-sort.cpp)  
-2.2 Insertion sort  
+2.2 [Insertion sort](src/insertion-sort.cpp)  
 2.3 Shellsort  
 2.4 Top-down and bottom-up mergesort  
 2.5 Quicksort, and quicksort with 3-way partitioning  
