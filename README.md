@@ -84,7 +84,7 @@ I've also chosen to follow the LLVM style guide with an exception: `<iostream>` 
 ```
 cd build
 
-# Run `clang-tidy` with on all source files.
+# Run `clang-tidy` on all source files.
 ../scripts/tidy.py
 
 # Run `clang-format` on all source files.
