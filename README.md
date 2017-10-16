@@ -23,7 +23,7 @@ make
 ./depth-first-search
 
 # Run some benchmark performance comparisons.
-cd ../scripts
+cd ..
 python3 scripts/compare-sorts.py
 ```
 
