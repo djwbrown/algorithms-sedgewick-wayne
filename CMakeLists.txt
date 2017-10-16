@@ -1,4 +1,5 @@
 project("sedgewick_wayne_algorithms")
+cmake_minimum_required(VERSION 3.9)
 
 # TODO: Set this first flag to your preferred compiler.
 # set(CMAKE_CXX_COMPILER g++)
@@ -13,6 +14,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Weverything -Wno-c++98-compat")
 # Use libc++ packaged with LLVM-5.0 and built with Homebrew.
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/local/opt/llvm/include")
 # set(CMAKE_EXE_LINKER_FLAGS "-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib")
+
+# Export the compile commands to JSON for clang-tidy.
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Fundamentals
 add_executable(lifo-stack-resizing-array src/lifo-stack-resizing-array.cpp)

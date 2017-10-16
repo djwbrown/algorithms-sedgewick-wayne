@@ -1,6 +1,6 @@
 //
 //  lifo-stack-resizing-array.cpp
-//  Copyright © 2017 Dylan Brown. All rights reserved.
+//  Copyright (c) 2017 Dylan Brown. All rights reserved.
 //
 
 // NOTES
