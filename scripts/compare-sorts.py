@@ -6,8 +6,12 @@
 # Use Python 3. Run from within the scripts/ directory.
 
 import os
+import sys
 import re
 import subprocess
+
+# Ensure we don't silently fail by running Python 2.
+assert sys.version_info[0] >= 3, "This script requires Python 3.x"
 
 # Number of iterations to average over.
 N = 100
