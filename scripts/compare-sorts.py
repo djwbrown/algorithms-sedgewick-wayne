@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 #
 #  compare-sorts.py
 #  Copyright (c) 2017 Dylan Brown. All rights reserved.
@@ -12,21 +13,23 @@ import subprocess
 
 # Ensure we don't silently fail by running Python 2.
 assert sys.version_info[0] >= 3, "This script requires Python 3.x"
+assert os.getcwd().split("/")[-1] == "algorithms-sedgewick-wayne", \
+    "This script must be run from the project's root directory."
 
 # Number of iterations to average over.
 N = 100
 
 # Data file to sort.
-DATA = "../algs4-data/words3.txt"
+DATA = "./algs4-data/words3.txt"
 
 def main():
     sorts = ["selection-sort",
              "insertion-sort"]
 
     for sort in sorts:
-        exe_path = "../build/{}".format(sort)
+        exe_path = "./build/{}".format(sort)
         if not os.path.isfile(exe_path):
-            raise OSError("The executable ../build/{} does not exist.".format(sort))
+            raise OSError("The executable ./build/{} does not exist.".format(sort))
 
         accumulated_time = 0
         for i in range(N):
@@ -42,7 +45,9 @@ def main():
             sel_sort_time = average_time
         else:
             print("{} took {} ns on average, "
-                  "a {:.1f}x speedup over selection sort.".format(sort, int(average_time), sel_sort_time / average_time))
+                  "a {:.1f}x speedup over selection sort.".format(sort,
+                                                                  int(average_time),
+                                                                  sel_sort_time / average_time))
 
 if __name__ == "__main__":
     main()

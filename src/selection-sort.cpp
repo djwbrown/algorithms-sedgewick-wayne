@@ -28,7 +28,7 @@ using std::vector;
 
 template <typename T> class Selection {
 public:
-  // Requirement: T must implement comparison operators.
+  // requires Sortable<T> (T must implement comparison operators).
   void sort(vector<T> &a);
 
   bool is_sorted(const vector<T> &a) {
@@ -90,8 +90,7 @@ int main(int argc, char *argv[]) {
   // For this example, we'll sort strings in alphabetical order.
   // Read the input data into a vector of std::string tokens.
   vector<string> tokens;
-  string tkn;
-  while (input_file >> tkn) {
+  for (string tkn; input_file >> tkn;) {
     tokens.push_back(tkn);
   }
   input_file.close();
@@ -111,8 +110,8 @@ int main(int argc, char *argv[]) {
 
   // Output the performance and results.
   cout << "Selection::sort, elapsed time (ns) = "
-       << std::chrono::duration_cast<std::chrono::nanoseconds>
-          (end - begin).count()
+       << std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin)
+              .count()
        << endl;
   sel.show(tokens);
 }

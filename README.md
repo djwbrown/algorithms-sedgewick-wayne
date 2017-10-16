@@ -1,18 +1,15 @@
 # Algorithms, Sedgewick and Wayne
 **Dylan Brown**  
-djwbrown \_at\_ gmail  
+djwbrown \_at\_ gmail
 
-## Introduction
 _Algorithms, 4th Edition_ by Robert Sedgewick and Kevin Wayne covers a nice collection of data structures and algorithms. The authors provide examples implemented in Java along with some sample data for testing.
 > Our original goal for [this book](http://algs4.cs.princeton.edu/code/) was to cover the _50 algorithms that every programmer should know_.
 
-Here I've ported each one to C++ as a learning exercise. I've tried to incorporate best practices for C++17 and later, with the [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines) and Scott Meyer's _Effective Modern C++_ as my guide. I'm using `clang-tidy` for formatting and guideline enforcement.
+Here I've ported each one to C++ as a learning exercise. I've tried to incorporate best practices for C++17 and later, with the [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines) and Scott Meyer's _Effective Modern C++_ as my guide.
 
-## Get the data
+## Setup
 The sample data is available at http://algs4.cs.princeton.edu/code/algs4-data.zip  
 Please extract the files to this directory at the root-level of the repository. `./algs4-data/`
-
-## Build and run
 ```
 mkdir build
 cd build
@@ -21,10 +18,6 @@ make
 
 # Run any algorithm.
 ./depth-first-search
-
-# Run some benchmark performance comparisons.
-cd ..
-python3 scripts/compare-sorts.py
 ```
 
 ## List of algorithms
@@ -76,12 +69,24 @@ python3 scripts/compare-sorts.py
 5.10 Huffman compression-expansion  
 5.11 LZW compression-expansion  
 
-## C++ Core Guidelines Enforcement
-I found that setting the compiler warnings to "most pedantic" was a helpful tool to screen for poor coding style.
+## Performance Benchmarks
+Run some benchmark performance comparisons.
 ```
-# Dependencies
-pip2 install pyyaml
+$ python3 scripts/compare-sorts.py
+selection-sort took 48864 ns on average.
+insertion-sort took 35218 ns on average, a 1.4x speedup over selection sort.
+```
 
-# Run the linter on all source files.
-../scripts/custom-clang-tidy.py
+## C++ Core Guidelines Enforcement
+I found that setting the compiler warnings to "most pedantic" was a helpful tool to screen for poor coding style. Specifically, I'm using LLVM's `-Weverything` except for C++98 compatibility warnings `-Wno-c++98-compat`.
+
+I've also chosen to follow the LLVM style guide with an exception: `<iostream>` and `std::endl` are permitted.
+```
+cd build
+
+# Run `clang-tidy` with on all source files.
+../scripts/tidy.py
+
+# Run `clang-format` on all source files.
+../scripts/format.py
 ```
