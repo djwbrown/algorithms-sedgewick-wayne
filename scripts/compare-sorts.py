@@ -17,19 +17,21 @@ assert os.getcwd().split("/")[-1] == "algorithms-sedgewick-wayne", \
     "This script must be run from the project's root directory."
 
 # Number of iterations to average over.
-N = 100
+N = 25
 
 # Data file to sort.
-DATA = "./algs4-data/words3.txt"
+# DATA = "./algs4-data/words3.txt"
+DATA = "./algs4-data/medTale.txt"
 
 def main():
     sorts = ["selection-sort",
-             "insertion-sort"]
+             "insertion-sort",
+             "shell-sort"]
 
     for sort in sorts:
-        exe_path = "./build/{}".format(sort)
+        exe_path = "./build/{}".format(sort.rstrip())
         if not os.path.isfile(exe_path):
-            raise OSError("The executable ./build/{} does not exist.".format(sort))
+            raise OSError("The executable {} does not exist.".format(exe_path))
 
         accumulated_time = 0
         for i in range(N):
@@ -41,11 +43,11 @@ def main():
         average_time = accumulated_time / N
 
         if "selection-sort" == sort:
-            print("{} took {} ns on average.".format(sort, int(average_time)))
+            print("{:>14} took {:>8} ns on average.".format(sort, int(average_time)))
             sel_sort_time = average_time
         else:
-            print("{} took {} ns on average, "
-                  "a {:.1f}x speedup over selection sort.".format(sort,
+            print("{:>14} took {:>8} ns on average, "
+                  "a {:4.1f}x speedup over selection sort.".format(sort,
                                                                   int(average_time),
                                                                   sel_sort_time / average_time))
 

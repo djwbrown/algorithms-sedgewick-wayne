@@ -31,7 +31,7 @@ make
 *Sorting*  
 2.1 [Selection sort](src/selection-sort.cpp)  
 2.2 [Insertion sort](src/insertion-sort.cpp)  
-2.3 Shellsort  
+2.3 [Shell sort](src/shell-sort.cpp)  
 2.4 Top-down and bottom-up mergesort  
 2.5 Quicksort, and quicksort with 3-way partitioning  
 
@@ -72,9 +72,10 @@ make
 ## Performance Benchmarks
 Run some benchmark performance comparisons.
 ```
-$ python3 scripts/compare-sorts.py
-selection-sort took 48864 ns on average.
-insertion-sort took 35218 ns on average, a 1.4x speedup over selection sort.
+$ python3 scripts/compare-sorts.py 
+selection-sort took 37376457 ns on average.
+insertion-sort took 27021170 ns on average, a  1.4x speedup over selection sort.
+    shell-sort took  1224262 ns on average, a 30.5x speedup over selection sort.
 ```
 
 ## C++ Core Guidelines Enforcement
