@@ -64,6 +64,7 @@ template <typename T> void Shell<T>::sort(std::vector<T> &a) {
   int h = 1;
   while (h < N / 3) // Note the integer division.
     h = 3 * h + 1;  // 1, 4, 13, 40, 121, 364, 1093, ...
+  
   while (h >= 1) {
     for (int i = h; i < N; i++) {
       for (int j = i; j >= h && less(a[j], a[j - h]); j -= h)
